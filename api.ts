@@ -18,4 +18,16 @@ export const setBody = (value: BodyType, input: ResponseData): ResponseData => {
     return resp;
 };
 
+export const setStatus = (status: number, input: ResponseData) => {
+    const resp = copy(input);
+    resp.status = status;
+    return resp;
+};
+
+export const setStatusText = (text: string, input: ResponseData) => {
+    const resp = copy(input);
+    resp.statusText = text;
+    return resp;
+};
+
 export const copy: Step = (r) => ({ ...r, headers: new Headers(r.headers) });
