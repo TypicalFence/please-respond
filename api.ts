@@ -1,6 +1,8 @@
 import { BodyType, ResponseData, Step } from "./types.ts";
 import { isBodyInit } from "./internal/mod.ts";
 
+export const copy: Step = (r) => ({ ...r, headers: new Headers(r.headers) });
+
 export const setHeader = (input: ResponseData, name: string, value: string) => {
     const resp = copy(input);
     resp.headers.set(name, value);
@@ -30,4 +32,3 @@ export const setStatusText = (text: string, input: ResponseData) => {
     return resp;
 };
 
-export const copy: Step = (r) => ({ ...r, headers: new Headers(r.headers) });

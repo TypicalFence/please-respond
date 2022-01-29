@@ -15,3 +15,11 @@ export const pipeSteps = pipe;
 export function toResponse(r: ResponseData): Response {
     return new Response(r.body, r);
 }
+
+export function fromResponse(r: Response): Omit<ResponseData, 'body'> {
+    return {
+        headers: new Headers(r.headers),
+        status: r.status,
+        statusText: r.statusText
+    }
+}
